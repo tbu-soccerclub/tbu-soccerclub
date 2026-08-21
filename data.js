@@ -46,18 +46,18 @@
    ------------------------------------------------------------------------- */
 const sheetsSyncConfig = {
   // 更新頻度が高いもの（Googleフォーム経由）
-  newsCsvUrl: "https://docs.google.com/spreadsheets/d/e/2PACX-1vSOz2dky2NJJZRwolzgrwJ4URcbnY8KPY3WwHtPPZyT7tBORmlv-lwaLBKR8mApxroYPcXTB3DNgwUT/pub?gid=143287817&single=true&output=csv",
-  scheduleCsvUrl: "https://docs.google.com/spreadsheets/d/e/2PACX-1vSOz2dky2NJJZRwolzgrwJ4URcbnY8KPY3WwHtPPZyT7tBORmlv-lwaLBKR8mApxroYPcXTB3DNgwUT/pub?gid=263763355&single=true&output=csv",
+  newsCsvUrl: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRbkEMzKThOXFQCwHE-i25rNnuCiFdWythtExEd_UMYl603rrObTyatv154mQSk_HoJo0U53whtuCVp/pub?gid=1502121005&single=true&output=csv",
+  scheduleCsvUrl: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRbkEMzKThOXFQCwHE-i25rNnuCiFdWythtExEd_UMYl603rrObTyatv154mQSk_HoJo0U53whtuCVp/pub?gid=2115353196&single=true&output=csv",
 
   // 更新頻度が低いもの（Googleフォームは経由せず、スプレッドシートを直接編集する）
   // 空欄（""）のままなら、今まで通り下の playersData / staffData / sponsorsData が使われます。
   // 設定方法は、このファイルの各データの説明コメント（220行目あたり〜）を参照してください
-  playersCsvUrl: "https://docs.google.com/spreadsheets/d/e/2PACX-1vSOz2dky2NJJZRwolzgrwJ4URcbnY8KPY3WwHtPPZyT7tBORmlv-lwaLBKR8mApxroYPcXTB3DNgwUT/pub?gid=210235188&single=true&output=csv",
-  staffCsvUrl: "https://docs.google.com/spreadsheets/d/e/2PACX-1vSOz2dky2NJJZRwolzgrwJ4URcbnY8KPY3WwHtPPZyT7tBORmlv-lwaLBKR8mApxroYPcXTB3DNgwUT/pub?gid=1706764530&single=true&output=csv",
-  sponsorsCsvUrl: "https://docs.google.com/spreadsheets/d/e/2PACX-1vSOz2dky2NJJZRwolzgrwJ4URcbnY8KPY3WwHtPPZyT7tBORmlv-lwaLBKR8mApxroYPcXTB3DNgwUT/pub?gid=2145349521&single=true&output=csv",
-  settingsCsvUrl: "https://docs.google.com/spreadsheets/d/e/2PACX-1vSOz2dky2NJJZRwolzgrwJ4URcbnY8KPY3WwHtPPZyT7tBORmlv-lwaLBKR8mApxroYPcXTB3DNgwUT/pub?gid=1120366738&single=true&output=csv", // 現役部員数・所属（ヒーローの数字）。設定方法はheroDataのコメント参照
-  faqCsvUrl: "https://docs.google.com/spreadsheets/d/e/2PACX-1vSOz2dky2NJJZRwolzgrwJ4URcbnY8KPY3WwHtPPZyT7tBORmlv-lwaLBKR8mApxroYPcXTB3DNgwUT/pub?gid=86208624&single=true&output=csv",       // Q&A。設定方法はfaqDataのコメント参照
-  supportCsvUrl: "https://docs.google.com/spreadsheets/d/e/2PACX-1vSOz2dky2NJJZRwolzgrwJ4URcbnY8KPY3WwHtPPZyT7tBORmlv-lwaLBKR8mApxroYPcXTB3DNgwUT/pub?gid=1373268438&single=true&output=csv",   // 企業様向けご支援案内。設定方法はsupportDataのコメント参照
+  playersCsvUrl: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRbkEMzKThOXFQCwHE-i25rNnuCiFdWythtExEd_UMYl603rrObTyatv154mQSk_HoJo0U53whtuCVp/pub?gid=2037321811&single=true&output=csv",
+  staffCsvUrl: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRbkEMzKThOXFQCwHE-i25rNnuCiFdWythtExEd_UMYl603rrObTyatv154mQSk_HoJo0U53whtuCVp/pub?gid=927703952&single=true&output=csv",
+  sponsorsCsvUrl: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRbkEMzKThOXFQCwHE-i25rNnuCiFdWythtExEd_UMYl603rrObTyatv154mQSk_HoJo0U53whtuCVp/pub?gid=43059755&single=true&output=csv",
+  settingsCsvUrl: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRbkEMzKThOXFQCwHE-i25rNnuCiFdWythtExEd_UMYl603rrObTyatv154mQSk_HoJo0U53whtuCVp/pub?gid=953343598&single=true&output=csv", // 現役部員数・所属（ヒーローの数字）。設定方法はheroDataのコメント参照
+  faqCsvUrl: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRbkEMzKThOXFQCwHE-i25rNnuCiFdWythtExEd_UMYl603rrObTyatv154mQSk_HoJo0U53whtuCVp/pub?gid=1281119274&single=true&output=csv",       // Q&A。設定方法はfaqDataのコメント参照
+  supportCsvUrl: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRbkEMzKThOXFQCwHE-i25rNnuCiFdWythtExEd_UMYl603rrObTyatv154mQSk_HoJo0U53whtuCVp/pub?gid=1213151733&single=true&output=csv",   // 企業様向けご支援案内。設定方法はsupportDataのコメント参照
 
   newsMaxItems: 6,
   newsMaxItemsMobile: 3,
