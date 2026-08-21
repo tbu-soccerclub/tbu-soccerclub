@@ -5,9 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="google-site-verification" content="DQB_yvfxl4hoN9bRUIr25Dn_NIeB8B-2S6glpcxXG2Q" />
 <script>
-  // ブラウザが「更新（リロード）前のスクロール位置を覚えておいて自動で戻す」機能を無効にする。
-  // これが有効なままだと、こちらでJSから一番上に戻しても、ブラウザが後から
-  // 元のスクロール位置に戻してしまうことがあるため、できるだけ早い段階で止めておく
   if ('scrollRestoration' in history) {
     history.scrollRestoration = 'manual';
   }
@@ -18,17 +15,12 @@
 <meta property="og:locale" content="ja_JP">
 <link rel="preload" as="image" href="images/top.webp">
 
-<!-- favicon（タブに表示されるアイコン）。images/ の中の画像を差し替えれば、
-     ここのHTMLは変えずにアイコンだけ変更できます -->
 <link rel="icon" href="images/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="192x192" href="images/icon-192.png">
 <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 
-<!-- OGP（Instagram・X・LINEなどでURLをシェアした時に表示される情報）。
-     ※サイトのURLが変わった場合は、og:url と og:image のドメイン部分
-     （https://tbu-soccerclub.netlify.app）も合わせて書き換えてください -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="徳島文理大学男子サッカー部">
 <meta property="og:title" content="徳島文理大学男子サッカー部 | 公式サイト">
@@ -41,8 +33,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Noto+Sans+JP:wght@400;500;700;900&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 
-<!-- 構造化データ（JSON-LD）：検索エンジンに「この団体は何者か」を直接伝えるための情報。
-     見た目には影響しない。SNSリンク等が変わった場合はここも合わせて更新してください。 -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -62,9 +52,6 @@
   ]
 }
 </script>
-<!-- FAQ構造化データ（FAQPage）：Q&Aセクションの内容をGoogleに伝え、
-     検索結果にアコーディオン形式のリッチリザルトとして表示される可能性があります。
-     faqData（data.js）の内容を変更したときは、ここも合わせて更新してください -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -126,8 +113,6 @@
 
 <a class="skip-link" href="#main">本文へスキップ</a>
 
-<!-- ===== HEADER =====
-     クラブ名・SNSリンクなどは data.js の siteData から自動反映されます -->
 <header class="site-header" id="top">
   <div class="header-inner">
     <a href="#top" class="logo" aria-label="徳島文理大学男子サッカー部 トップへ">
@@ -158,12 +143,8 @@
 
 <main id="main">
 
-  <!-- ===== HERO =====
-       見出し・写真・数字は data.js の heroData から自動反映されます -->
-  <section class="hero" aria-label="トップビジュアル">
-    <!-- heroData.photo に画像パスがあれば、ここに自動で写真（複数指定でスライドショー）が表示されます。
-         無ければ下のダミー表示のままになります。 -->
-    <div class="hero-photo" id="heroPhoto">
+    <section class="hero" aria-label="トップビジュアル">
+        <div class="hero-photo" id="heroPhoto">
       <div class="photo-placeholder">
         <svg viewBox="0 0 64 64" width="64" height="64" aria-hidden="true">
           <circle cx="32" cy="32" r="27" fill="none" stroke="currentColor" stroke-width="2"/>
@@ -172,9 +153,7 @@
         <span>TEAM PHOTO</span>
       </div>
     </div>
-    <!-- 写真の上に敷く暗めのベタ塗り（グラデーションは使わず、単色の半透明パネルで
-         文字を読みやすくする。このサイトの「面で分ける」デザイン方針に合わせている） -->
-    <div class="hero-overlay" aria-hidden="true"></div>
+        <div class="hero-overlay" aria-hidden="true"></div>
     <div class="hero-arc" aria-hidden="true"></div>
     <div class="hero-inner">
       <p class="eyebrow" id="heroEyebrow"></p>
@@ -185,15 +164,12 @@
         <a href="#about" class="btn btn-ghost">部の活動を見る</a>
       </div>
       <dl class="hero-stats" id="heroStats">
-        <!-- data.js の heroData.stats がここに自動で表示されます -->
-      </dl>
+              </dl>
       <p class="sync-warning" id="settingsSyncWarning" hidden>⚠ 最新の情報を読み込めませんでした。表示中の内容は最新でない可能性があります。</p>
     </div>
   </section>
 
-  <!-- ===== NEWS =====
-       中身は data.js の newsData を JavaScript で自動的に流し込みます。 -->
-  <section class="section news-section" id="news">
+    <section class="section news-section" id="news">
     <div class="section-inner">
       <div class="section-head">
         <h2 class="section-title"><span class="section-title-en">News</span><span class="section-title-jp">ニュース・試合速報</span></h2>
@@ -201,19 +177,15 @@
       <p class="sync-warning" id="newsSyncWarning" hidden>⚠ 最新の情報を読み込めませんでした。表示中の内容は最新でない可能性があります。</p>
 
       <div class="news-grid" id="newsGrid">
-        <!-- data.js の newsData がここに自動で表示されます -->
-      </div>
+              </div>
       <p class="section-note" id="newsMoreNote" hidden></p>
       <p class="news-more-link"><a href="news.html" class="section-link">更新一覧を詳しく見る →</a></p>
       <div class="section-extras" id="newsExtras">
-        <!-- 「その他」シートで「Newsの「◯◯」」という行を追加すると、ここに自動で表示されます -->
-      </div>
+              </div>
     </div>
   </section>
 
-  <!-- ===== ABOUT & SCHEDULE =====
-       中身は data.js の aboutData を JavaScript で自動的に流し込みます。 -->
-  <section class="section about-section" id="about">
+    <section class="section about-section" id="about">
     <div class="section-inner">
       <h2 class="section-title"><span class="section-title-en">About</span><span class="section-title-jp">部の紹介・練習日時</span></h2>
 
@@ -224,22 +196,18 @@
         </div>
 
         <dl class="about-facts" id="aboutFacts">
-          <!-- data.js の aboutData.facts がここに自動で表示されます -->
-        </dl>
+                  </dl>
       </div>
 
       <div class="year-schedule">
         <h3 class="sub-title">年間スケジュール</h3>
         <div class="year-schedule-grid" id="yearScheduleGrid">
-          <!-- data.js の aboutData.yearSchedule がここに自動で表示されます -->
-        </div>
+                  </div>
       </div>
     </div>
   </section>
 
-  <!-- ===== SCHEDULE / RESULTS =====
-       中身は data.js の scheduleData を JavaScript で自動的に流し込みます。 -->
-  <section class="section results-section" id="schedule">
+    <section class="section results-section" id="schedule">
     <div class="section-inner">
       <h2 class="section-title section-title--light"><span class="section-title-en">Schedule</span><span class="section-title-jp">試合日程・結果</span></h2>
       <p class="sync-warning sync-warning--light" id="scheduleSyncWarning" hidden>⚠ 最新の情報を読み込めませんでした。表示中の内容は最新でない可能性があります。</p>
@@ -252,8 +220,7 @@
           <span role="columnheader">結果</span>
         </div>
         <div id="scheduleBody">
-          <!-- data.js の scheduleData がここに自動で表示されます -->
-        </div>
+                  </div>
       </div>
       <p class="section-note section-note--light" id="scheduleMoreNote" hidden></p>
       <p class="schedule-more-link" id="scheduleMoreLink" hidden><a href="schedule.html" class="section-link">全日程を見る →</a></p>
@@ -261,32 +228,24 @@
         ※試合結果の詳細は公式Instagram（<a href="#" target="_blank" rel="noopener" class="js-instagram-link"><span class="js-instagram-handle">@bunri.uni</span></a>）で随時発信しています。
       </p>
       <div class="section-extras section-extras--light" id="scheduleExtras">
-        <!-- 「その他」シートで「Scheduleの「◯◯」」という行を追加すると、ここに自動で表示されます -->
-      </div>
+              </div>
     </div>
   </section>
 
-  <!-- ===== MEMBERS =====
-       監督・コーチのコメントは data.js の staffData、
-       選手カードは data.js の playersData を JavaScript で自動的に流し込みます。 -->
-  <section class="section members-section" id="members">
+    <section class="section members-section" id="members">
     <div class="section-inner">
       <h2 class="section-title"><span class="section-title-en">Members</span><span class="section-title-jp">選手・指導者紹介</span></h2>
 
-      <!-- スマホ版だけ表示（CSSで出し分け）。部員一覧の代わりに、
-           人数・代表写真・「部員紹介を見る」ボタンだけを表示する -->
-      <div class="members-summary" id="membersSummary">
+            <div class="members-summary" id="membersSummary">
         <img class="members-summary-photo" id="membersSummaryPhoto" src="" alt="部員集合写真" loading="lazy">
         <p class="members-summary-count" id="membersSummaryCount"></p>
         <a href="members.html" class="btn btn-cta">部員紹介を見る</a>
       </div>
 
-      <!-- PC版はこちらがそのまま表示される。スマホ版はCSSで非表示になる -->
-      <div class="members-full" id="membersFull">
+            <div class="members-full" id="membersFull">
         <p class="sync-warning" id="staffSyncWarning" hidden>⚠ 最新の情報を読み込めませんでした。表示中の内容は最新でない可能性があります。</p>
         <div class="staff-comments" id="staffComments">
-          <!-- data.js の staffData がここに自動で表示されます -->
-        </div>
+                  </div>
 
         <p class="sync-warning" id="playersSyncWarning" hidden>⚠ 最新の情報を読み込めませんでした。表示中の内容は最新でない可能性があります。</p>
         <div class="filter-bar" role="group" aria-label="選手フィルター" id="filterBar">
@@ -295,60 +254,46 @@
           <button class="filter-btn" data-filter="3年">3年生</button>
           <button class="filter-btn" data-filter="2年">2年生</button>
           <button class="filter-btn" data-filter="1年">1年生</button>
-          <!-- スタッフの役職ボタンは、スプレッドシートの「役職」列に入力された
-               文字ごとに script.js が自動で生成してここに追加します -->
-        </div>
+                  </div>
 
         <div class="player-grid" id="playerGrid">
-          <!-- data.js の playersData がここに自動で表示されます -->
-        </div>
+                  </div>
         <p class="filter-empty" id="filterEmpty" hidden>該当する部員がいません。</p>
         <p class="member-more-link" id="memberMoreLink" hidden><a href="members.html" class="section-link">部員全員を見る →</a></p>
         <div class="section-extras" id="membersExtras">
-          <!-- 「その他」シートで「Membersの「◯◯」」という行を追加すると、ここに自動で表示されます -->
-        </div>
+                  </div>
       </div>
     </div>
   </section>
 
-  <!-- ===== FAQ =====
-       質問・回答は data.js の faqData を JavaScript で自動的に流し込みます。 -->
-  <section class="section faq-section" id="faq">
+    <section class="section faq-section" id="faq">
     <div class="section-inner section-inner--narrow">
       <h2 class="section-title"><span class="section-title-en">Q&amp;A</span><span class="section-title-jp">新入生向けよくある質問</span></h2>
 
       <p class="sync-warning" id="faqSyncWarning" hidden>⚠ 最新の情報を読み込めませんでした。表示中の内容は最新でない可能性があります。</p>
       <div class="accordion" id="faqAccordion">
-        <!-- data.js の faqData がここに自動で表示されます -->
-      </div>
+              </div>
       <div class="section-extras" id="faqExtras">
-        <!-- 「その他」シートで「Q&amp;Aの「◯◯」」という行を追加すると、ここに自動で表示されます -->
-      </div>
+              </div>
     </div>
   </section>
 
-  <!-- ===== SPONSORS =====
-       企業紹介は data.js の sponsorsData、支援案内は supportData から
-       JavaScript で自動的に流し込みます。 -->
-  <section class="section sponsors-section" id="sponsors">
+    <section class="section sponsors-section" id="sponsors">
     <div class="section-inner">
       <h2 class="section-title"><span class="section-title-en">Sponsors</span><span class="section-title-jp">ご支援いただいている企業様</span></h2>
       <p class="sponsors-lead">日頃より徳島文理大学男子サッカー部の活動をご支援いただいている企業様です。</p>
       <p class="sync-warning" id="sponsorsSyncWarning" hidden>⚠ 最新の情報を読み込めませんでした。表示中の内容は最新でない可能性があります。</p>
 
       <ul class="sponsor-grid" id="sponsorGrid">
-        <!-- data.js の sponsorsData がここに自動で表示されます -->
-      </ul>
+              </ul>
       <div class="section-extras" id="sponsorsExtras">
-        <!-- 「その他」シートで「Sponsorsの「◯◯」」という行を追加すると、ここに自動で表示されます -->
-      </div>
+              </div>
 
       <div class="sponsor-support">
         <h3 class="sub-title">企業様向けご支援案内</h3>
         <p class="sync-warning" id="supportSyncWarning" hidden>⚠ 最新の情報を読み込めませんでした。表示中の内容は最新でない可能性があります。</p>
         <div class="support-grid" id="supportGrid">
-          <!-- data.js の supportData がここに自動で表示されます -->
-        </div>
+                  </div>
         <p class="support-contact">
           お申し込み・お問い合わせは
           <a href="#" class="js-sponsor-email">tokushimabunri.univ.soccer@gmail.com</a>
@@ -359,10 +304,7 @@
     </div>
   </section>
 
-  <!-- ===== CONTACT =====
-       企業様・スポンサー様専用のお問い合わせフォームです。
-       体験練習・入部のご相談は、公式Instagramへ直接ご連絡いただく形にしています。 -->
-  <section class="section contact-section" id="contact">
+    <section class="section contact-section" id="contact">
     <div class="section-inner section-inner--narrow">
       <h2 class="section-title"><span class="section-title-en">Contact</span><span class="section-title-jp">企業様・スポンサー様お問い合わせ</span></h2>
       <p class="contact-lead">協賛・寄付など、企業様からのご支援に関するお問い合わせは下記フォームよりお願いいたします。担当者より折り返しご連絡いたします。</p>
@@ -382,8 +324,6 @@
 
 </main>
 
-<!-- ===== FOOTER =====
-     クラブ名・SNSリンク・著作権表記は data.js の siteData から自動反映されます -->
 <footer class="site-footer">
   <div class="footer-inner">
     <div class="footer-brand">

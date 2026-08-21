@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script>
-  // ブラウザの「更新前のスクロール位置を自動で復元する」機能を無効にする
   if ('scrollRestoration' in history) {
     history.scrollRestoration = 'manual';
   }
@@ -46,8 +45,6 @@
 
 <a class="skip-link" href="#main">本文へスキップ</a>
 
-<!-- ===== HEADER =====
-     index.html と同じヘッダーです。クラブ名・SNSリンクなどは data.js の siteData から自動反映されます -->
 <header class="site-header" id="top">
   <div class="header-inner">
     <a href="index.html" class="logo" aria-label="徳島文理大学男子サッカー部 トップへ">
@@ -78,10 +75,7 @@
 
 <main id="main">
 
-  <!-- ===== 部員紹介（ホームと同じ Members の中身を再利用） =====
-       中身は data.js の staffData / playersData（またはGoogleスプレッドシート連携）を
-       JavaScript で自動的に流し込みます。 -->
-  <section class="section members-section">
+    <section class="section members-section">
     <div class="section-inner">
       <div class="section-head">
         <h1 class="section-title"><span class="section-title-en">Members</span><span class="section-title-jp">選手・指導者紹介</span></h1>
@@ -90,8 +84,7 @@
 
       <p class="sync-warning" id="pageStaffSyncWarning" hidden>⚠ 最新の情報を読み込めませんでした。表示中の内容は最新でない可能性があります。</p>
       <div class="staff-comments" id="pageStaffComments">
-        <!-- members-archive.js がここに自動で表示します -->
-      </div>
+              </div>
 
       <p class="sync-warning" id="pagePlayersSyncWarning" hidden>⚠ 最新の情報を読み込めませんでした。表示中の内容は最新でない可能性があります。</p>
       <div class="search-bar">
@@ -103,24 +96,18 @@
         <button class="filter-btn" data-filter="3年">3年生</button>
         <button class="filter-btn" data-filter="2年">2年生</button>
         <button class="filter-btn" data-filter="1年">1年生</button>
-        <!-- スタッフの役職ボタンは、スプレッドシートの「役職」列に入力された
-             文字ごとに members-archive.js が自動で生成してここに追加します -->
-      </div>
+              </div>
 
       <div class="player-grid" id="pagePlayerGrid">
-        <!-- members-archive.js がここに自動で表示します -->
-      </div>
+              </div>
       <p class="filter-empty" id="pageFilterEmpty" hidden>該当する部員がいません。</p>
       <div class="section-extras" id="pageMembersExtras">
-        <!-- 「その他」シートで「Membersの「◯◯」」という行を追加すると、ここに自動で表示されます -->
-      </div>
+              </div>
     </div>
   </section>
 
 </main>
 
-<!-- ===== FOOTER =====
-     index.html と同じフッターです -->
 <footer class="site-footer">
   <div class="footer-inner">
     <div class="footer-brand">

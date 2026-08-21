@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script>
-  // ブラウザの「更新前のスクロール位置を自動で復元する」機能を無効にする
   if ('scrollRestoration' in history) {
     history.scrollRestoration = 'manual';
   }
@@ -46,8 +45,6 @@
 
 <a class="skip-link" href="#main">本文へスキップ</a>
 
-<!-- ===== HEADER =====
-     index.html と同じヘッダーです。クラブ名・SNSリンクなどは data.js の siteData から自動反映されます -->
 <header class="site-header" id="top">
   <div class="header-inner">
     <a href="index.html" class="logo" aria-label="徳島文理大学男子サッカー部 トップへ">
@@ -78,10 +75,7 @@
 
 <main id="main">
 
-  <!-- ===== 更新一覧（ホームと同じ News カードを再利用） =====
-       中身は data.js の newsData（またはGoogleフォーム連携）を
-       JavaScript で自動的に流し込みます。件数の上限はありません。 -->
-  <section class="section news-section">
+    <section class="section news-section">
     <div class="section-inner">
       <div class="section-head">
         <h1 class="section-title"><span class="section-title-en">News</span><span class="section-title-jp">更新一覧</span></h1>
@@ -102,16 +96,13 @@
       </div>
 
       <div class="news-grid" id="archiveList">
-        <!-- news-archive.js がここに全件を自動で表示します -->
-      </div>
+              </div>
       <p class="filter-empty" id="archiveEmpty" hidden>該当するニュースがありません。</p>
     </div>
   </section>
 
 </main>
 
-<!-- ===== FOOTER =====
-     index.html と同じフッターです -->
 <footer class="site-footer">
   <div class="footer-inner">
     <div class="footer-brand">
