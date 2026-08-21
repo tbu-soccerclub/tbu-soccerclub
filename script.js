@@ -674,7 +674,11 @@ document.addEventListener('DOMContentLoaded', async () => {
      選手・指導者紹介：フィルター機能
      （data.js のレンダリングより後に実行する必要があるためここに配置）
   ========================================================= */
-  const filterBar = document.getElementById('filterBar');
+  // members.html は script.js と members-archive.js の両方を読み込んでおり、
+  // どちらも同じ id="filterBar" を操作しようとしてボタンが二重生成されてしまうため、
+  // このセクションは index.html 専用の playerGrid がある時だけ実行する
+  // （members.html側のフィルター機能は members-archive.js が担当する）
+  const filterBar = playerGrid ? document.getElementById('filterBar') : null;
 
   // スタッフの役職ボタンは、スプレッドシートの「役職」列に入力された文字ごとに
   // 自動生成する（初めて出てきた順番でボタンが並ぶ）
