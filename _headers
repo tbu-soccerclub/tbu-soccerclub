@@ -14,12 +14,13 @@
 /images/*
   Cache-Control: public, max-age=31536000, immutable
 
-# ─── CSS・JS（1日キャッシュ）────────────────────────────────────────────
+# ─── CSS・JS（常に最新を取得）───────────────────────────────────────────
+# 更新頻度の低い部活サイトなので、帯域節約より「更新がすぐ反映される」ことを優先している
 /*.css
-  Cache-Control: public, max-age=86400
+  Cache-Control: no-cache
 
 /*.js
-  Cache-Control: public, max-age=86400
+  Cache-Control: no-cache
 
 # ─── HTMLページ（常に最新を取得）────────────────────────────────────────
 /*.html
