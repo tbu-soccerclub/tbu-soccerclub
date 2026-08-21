@@ -180,9 +180,13 @@ document.addEventListener('DOMContentLoaded', async () => {
   renderSectionExtras('faqExtras', 'faq');
   renderSectionExtras('sponsorsExtras', 'sponsors');
 
-  // 現役部員数は「選手＋マネージャーの合計」を自動計算する（手入力不要）
+  // 現役部員数は「選手＋マネージャー等の合計」を自動計算する（手入力不要）。
+  // ただし NON_MEMBER_ROLES に入っている役職（Web担当など、部に入部していない協力者）だけは
+  // 一覧には表示するが、この人数にはカウントしない。マネージャー・審判・記録係など、
+  // 今後増える部員としての役職は何も設定しなくてもそのままカウントされる
+  const NON_MEMBER_ROLES = ['Webエンジニア'];
   const rawPlayersDataForCount = window.__syncedPlayersData || (typeof playersData !== 'undefined' ? playersData : []);
-  const totalMemberCount = String(rawPlayersDataForCount.length);
+  const totalMemberCount = String(rawPlayersDataForCount.filter((p) => !NON_MEMBER_ROLES.includes(p.role)).length);
 
   const statsEl = document.getElementById('heroStats');
   if (statsEl && typeof heroData !== 'undefined' && heroData.stats) {
