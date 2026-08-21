@@ -1,0 +1,5 @@
+# 本番URLが決まったら、下のSitemap行のドメイン部分を新しいドメインに書き換えてください
+User-agent: *
+Allow: /
+
+Sitemap: https://tbu-soccerclub.netlify.app/sitemap.xml

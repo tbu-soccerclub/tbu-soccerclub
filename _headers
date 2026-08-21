@@ -1,0 +1,29 @@
+## Netlify _headers：セキュリティヘッダーとキャッシュ設定
+## このファイルはそのままアップロードしてください。編集は不要です。
+
+# ─── すべてのページ（セキュリティヘッダー）───────────────────────────────
+/*
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  X-XSS-Protection: 1; mode=block
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+
+# ─── 画像（1年間キャッシュ）─────────────────────────────────────────────
+# 画像を差し替えたときはファイル名も変えてください（同じ名前だとキャッシュが残ることがあります）
+/images/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# ─── CSS・JS（1日キャッシュ）────────────────────────────────────────────
+/*.css
+  Cache-Control: public, max-age=86400
+
+/*.js
+  Cache-Control: public, max-age=86400
+
+# ─── HTMLページ（常に最新を取得）────────────────────────────────────────
+/*.html
+  Cache-Control: no-cache
+
+/
+  Cache-Control: no-cache

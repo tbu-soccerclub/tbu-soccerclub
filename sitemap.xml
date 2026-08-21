@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  本番URLが決まったら、下の4つのURLの「https://tbu-soccerclub.netlify.app」部分を
+  新しいドメインに一括置換してください（index.html/news.html/members.html/schedule.htmlの
+  og:url・og:imageと同じドメインに揃えること）。
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://tbu-soccerclub.netlify.app/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://tbu-soccerclub.netlify.app/news.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://tbu-soccerclub.netlify.app/members.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tbu-soccerclub.netlify.app/schedule.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+</urlset>
