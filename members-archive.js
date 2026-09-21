@@ -50,6 +50,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         <h3 class="player-name">${escapeHtml(p.name)}</h3>
         <p class="player-meta">${escapeHtml(p.role)}</p>
         ${p.sub ? `<p class="player-quote">${escapeHtml(p.sub)}</p>` : ''}
+        ${p.license ? `<p class="player-license-row">${renderLicenseBadges(p.license)}</p>` : ''}
       </article>
     `).join('');
   }

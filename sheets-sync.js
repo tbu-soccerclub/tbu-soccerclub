@@ -70,6 +70,7 @@
   const PLAYER_KEYWORDS = [
     ["photo", "写真"],
     ["roleRaw", "役職"],
+    ["license", "資格"],
     ["sub", "出身"],
     ["grade", "学年"],
     ["name", "名前"]
@@ -333,6 +334,9 @@
         const gradeNum = gradeNumMatch ? gradeNumMatch[0] : "";
 
         const schoolRaw = getVal(o, cols, "sub");
+        // カードの高さが人によってバラつかないよう、名前の横に小さなバッジで表示する
+        // （出身校のような別行にすると、Grid表示で同じ行の他の人のカードにも余白ができてしまうため）
+        const license = getVal(o, cols, "license").trim();
 
         let grade, role, sub;
         if (isStaff) {
@@ -353,6 +357,7 @@
           grade,
           role,
           sub,
+          license,
           photo: resolveImagePath(getVal(o, cols, "photo")),
           isStaff
         };

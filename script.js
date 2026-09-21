@@ -181,12 +181,11 @@ document.addEventListener('DOMContentLoaded', async () => {
   renderSectionExtras('sponsorsExtras', 'sponsors');
 
   // 現役部員数は「選手＋マネージャー等の合計」を自動計算する（手入力不要）。
-  // ただし NON_MEMBER_ROLES に入っている役職（Web担当など、部に入部していない協力者）だけは
-  // 一覧には表示するが、この人数にはカウントしない。マネージャー・審判・記録係など、
-  // 今後増える部員としての役職は何も設定しなくてもそのままカウントされる
-  const NON_MEMBER_ROLES = ['Webエンジニア'];
+  // ただし NON_MEMBER_NAMES に入っている名前の人（部に入部していない協力者）だけは
+  // 一覧には表示するが、この人数にはカウントしない。役職名を変更しても影響しない
+  const NON_MEMBER_NAMES = ['田中 景悟'];
   const rawPlayersDataForCount = window.__syncedPlayersData || (typeof playersData !== 'undefined' ? playersData : []);
-  const totalMemberCount = String(rawPlayersDataForCount.filter((p) => !NON_MEMBER_ROLES.includes(p.role)).length);
+  const totalMemberCount = String(rawPlayersDataForCount.filter((p) => !NON_MEMBER_NAMES.includes(p.name)).length);
 
   const statsEl = document.getElementById('heroStats');
   if (statsEl && typeof heroData !== 'undefined' && heroData.stats) {
@@ -573,6 +572,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         <h3 class="player-name">${escapeHtml(p.name)}</h3>
         <p class="player-meta">${escapeHtml(p.role)}</p>
         ${p.sub ? `<p class="player-quote">${escapeHtml(p.sub)}</p>` : ''}
+        ${p.license ? `<p class="player-license-row">${renderLicenseBadges(p.license)}</p>` : ''}
       </article>
     `.trim()).join('');
   }

@@ -1001,6 +1001,17 @@ input, textarea, select{ font-family: inherit; font-size: 1rem; }
   font-family: var(--font-label);
 }
 .player-quote{ margin: 4px 18px 0; color: var(--ink-soft); font-size: .84rem; }
+.player-license-row{ margin: 6px 18px 0; display: flex; flex-wrap: wrap; gap: 5px; }
+.player-license-badge{
+  display: inline-block;
+  padding: .15em .6em;
+  font-family: var(--font-label);
+  font-weight: 600;
+  font-size: .68rem;
+  color: var(--ink-soft);
+  border: 1.3px solid var(--ink-soft);
+  border-radius: 999px;
+}
 
 .filter-empty{
   text-align: center;

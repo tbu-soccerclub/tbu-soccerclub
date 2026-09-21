@@ -64,6 +64,14 @@ const GRADE_ORDER = { '4年': 0, '3年': 1, '2年': 2, '1年': 3, 'スタッフ'
 const sortByGrade = (list) =>
   [...list].sort((a, b) => (GRADE_ORDER[a.grade] ?? 99) - (GRADE_ORDER[b.grade] ?? 99));
 
+// 保有資格をバッジとして表示するHTMLに変換する。
+// スプレッドシートのセル内で改行（Alt+Enter / Windowsは Ctrl+Enter）して複数行にすると、
+// バッジもその数だけ自動で分かれて表示される
+const renderLicenseBadges = (license) => {
+  const items = String(license || '').split(/\r?\n/).map((s) => s.trim()).filter(Boolean);
+  return items.map((item) => `<span class="player-license-badge">${escapeHtml(item)}</span>`).join('');
+};
+
 // 試合結果（勝敗未定／リンク／スコア）をバッジ表示用のHTMLに変換する
 const renderResult = (result) => {
   if (result.type === 'link') {
