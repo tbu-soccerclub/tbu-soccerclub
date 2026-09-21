@@ -575,6 +575,7 @@ input, textarea, select{ font-family: inherit; font-size: 1rem; }
 .news-tag--match{ background: var(--red); color: var(--white); }
 .news-tag--info{ border: 1.5px solid var(--ink); color: var(--ink); }
 .news-tag--recruit{ background: var(--ink); color: var(--white); }
+.news-tag--report{ border: 1.5px solid var(--red); color: var(--red); }
 .news-tag-pinned{
   text-align: center;
   font-family: var(--font-label);

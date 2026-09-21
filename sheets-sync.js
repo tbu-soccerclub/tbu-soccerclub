@@ -47,7 +47,7 @@
     ["link", "リンク"],
     ["image", ["画像", "写真"]]
   ];
-  const NEWS_TAG_MAP = { "試合": "match", "お知らせ": "info", "募集": "recruit" };
+  const NEWS_TAG_MAP = { "試合": "match", "お知らせ": "info", "募集": "recruit", "活動報告": "report" };
 
   const SCHEDULE_KEYWORDS = [
     ["resultLink", "リンク"],

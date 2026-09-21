@@ -414,7 +414,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   const scheduleSyncWarning = document.getElementById('scheduleSyncWarning');
   if (scheduleSyncWarning) scheduleSyncWarning.hidden = !(window.__scheduleSyncFailed && cfg.scheduleCsvUrl);
 
-  const newsTagLabel = { match: '試合', info: 'お知らせ', recruit: '募集' };
+  const newsTagLabel = { match: '試合', info: 'お知らせ', recruit: '募集', report: '活動報告' };
   const newsGrid = document.getElementById('newsGrid');
   if (newsGrid) {
     newsGrid.innerHTML = effectiveNewsData.map((item) => `
