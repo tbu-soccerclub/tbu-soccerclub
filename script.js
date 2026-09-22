@@ -414,7 +414,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   const scheduleSyncWarning = document.getElementById('scheduleSyncWarning');
   if (scheduleSyncWarning) scheduleSyncWarning.hidden = !(window.__scheduleSyncFailed && cfg.scheduleCsvUrl);
 
-  const newsTagLabel = { match: '試合', info: 'お知らせ', recruit: '募集', report: '活動報告' };
   const newsGrid = document.getElementById('newsGrid');
   if (newsGrid) {
     newsGrid.innerHTML = effectiveNewsData.map((item) => `
@@ -562,19 +561,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   if (playerGrid) {
-    playerGrid.innerHTML = effectivePlayersData.map((p) => `
-      <article class="player-card${p.isStaff ? ' player-card--staff' : ''}" data-filter-key="${escapeHtml(p.isStaff ? p.role : p.grade)}">
-        <div class="player-photo">
-          ${p.photo
-            ? `<img src="${escapeHtml(p.photo)}" alt="${escapeHtml(p.name)}" class="player-photo-img" loading="lazy" data-fallback="${escapeHtml(`<span class="player-initial">${p.initial}</span>`)}" onerror="window.handleImgFallback(this)">`
-            : `<span class="player-initial">${escapeHtml(p.initial)}</span>`}
-        </div>
-        <h3 class="player-name">${escapeHtml(p.name)}</h3>
-        <p class="player-meta">${escapeHtml(p.role)}</p>
-        ${p.sub ? `<p class="player-quote">${escapeHtml(p.sub)}</p>` : ''}
-        ${p.license ? `<p class="player-license-row">${renderLicenseBadges(p.license)}</p>` : ''}
-      </article>
-    `.trim()).join('');
+    playerGrid.innerHTML = effectivePlayersData.map(renderPlayerCard).join('');
   }
   if (memberMoreLink) {
     memberMoreLink.hidden = !membersTruncated;
@@ -687,11 +674,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   // スタッフの役職ボタンは、スプレッドシートの「役職」列に入力された文字ごとに
   // 自動生成する（初めて出てきた順番でボタンが並ぶ）
   if (filterBar) {
-    const staffRoles = [];
-    rawPlayersData.forEach((p) => {
-      if (p.isStaff && p.role && !staffRoles.includes(p.role)) staffRoles.push(p.role);
-    });
-    filterBar.insertAdjacentHTML('beforeend', staffRoles.map((role) =>
+    filterBar.insertAdjacentHTML('beforeend', getStaffRoleList(rawPlayersData).map((role) =>
       `<button class="filter-btn" data-filter="${escapeHtml(role)}">${escapeHtml(role)}</button>`
     ).join(''));
   }

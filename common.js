@@ -58,6 +58,36 @@ const newsItemSlug = (item) => {
   return 'n' + Math.abs(hash).toString(36);
 };
 
+// ニュースの種類（tag）と、画面に表示する日本語ラベルの対応表。
+// script.js（トップページ）・news-archive.js（更新一覧ページ）の両方で使う
+const newsTagLabel = { match: '試合', info: 'お知らせ', recruit: '募集', report: '活動報告' };
+
+// スタッフ（isStaff）の行から、入力されている「役職」を重複なく・初出順に取り出す。
+// フィルターボタンを役職ごとに自動生成するために使う（script.js・members-archive.jsで共通）
+const getStaffRoleList = (players) => {
+  const roles = [];
+  players.forEach((p) => {
+    if (p.isStaff && p.role && !roles.includes(p.role)) roles.push(p.role);
+  });
+  return roles;
+};
+
+// 選手・スタッフ1人分のカードHTML。トップページの部員紹介・部員紹介ページ（members.html）の
+// 両方で見た目を完全に揃えるため、テンプレートをここに1つだけ置いている
+const renderPlayerCard = (p) => `
+      <article class="player-card${p.isStaff ? ' player-card--staff' : ''}" data-filter-key="${escapeHtml(p.isStaff ? p.role : p.grade)}">
+        <div class="player-photo">
+          ${p.photo
+            ? `<img src="${escapeHtml(p.photo)}" alt="${escapeHtml(p.name)}" class="player-photo-img" loading="lazy" data-fallback="${escapeHtml(`<span class="player-initial">${p.initial}</span>`)}" onerror="window.handleImgFallback(this)">`
+            : `<span class="player-initial">${escapeHtml(p.initial)}</span>`}
+        </div>
+        <h3 class="player-name">${escapeHtml(p.name)}</h3>
+        <p class="player-meta">${escapeHtml(p.role)}</p>
+        ${p.sub ? `<p class="player-quote">${escapeHtml(p.sub)}</p>` : ''}
+        ${p.license ? `<p class="player-license-row">${renderLicenseBadges(p.license)}</p>` : ''}
+      </article>
+    `.trim();
+
 // 入力された順番がバラバラでも、学年順（4年→3年→2年→1年→スタッフ）に並べる。
 // 同じ学年の中の並び順は、スプレッドシート（またはdata.js）に入力された順番がそのまま使われる
 const GRADE_ORDER = { '4年': 0, '3年': 1, '2年': 2, '1年': 3, 'スタッフ': 4 };

@@ -24,8 +24,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   const cfg = (typeof sheetsSyncConfig !== 'undefined') ? sheetsSyncConfig : {};
   if (newsSyncWarning) newsSyncWarning.hidden = !(window.__newsSyncFailed && cfg.newsCsvUrl);
 
-  const newsTagLabel = { match: '試合', info: 'お知らせ', recruit: '募集', report: '活動報告' };
-
   const rawNewsData = window.__syncedNewsData || (typeof newsData !== 'undefined' ? newsData : []);
   // 更新一覧ページでは「固定」を上に集めたりはしない。全件をそのまま日付順に並べる。
   // pinned だった項目は「重要」バッジが付くだけで、並び順には影響しない

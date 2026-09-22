@@ -40,19 +40,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   const rawPlayersData = window.__syncedPlayersData || (typeof playersData !== 'undefined' ? playersData : []);
   const effectivePlayersData = sortByGrade(rawPlayersData); // common.js
   if (playerGrid) {
-    playerGrid.innerHTML = effectivePlayersData.map((p) => `
-      <article class="player-card${p.isStaff ? ' player-card--staff' : ''}" data-filter-key="${escapeHtml(p.isStaff ? p.role : p.grade)}">
-        <div class="player-photo">
-          ${p.photo
-            ? `<img src="${escapeHtml(p.photo)}" alt="${escapeHtml(p.name)}" class="player-photo-img" loading="lazy">`
-            : `<span class="player-initial">${escapeHtml(p.initial)}</span>`}
-        </div>
-        <h3 class="player-name">${escapeHtml(p.name)}</h3>
-        <p class="player-meta">${escapeHtml(p.role)}</p>
-        ${p.sub ? `<p class="player-quote">${escapeHtml(p.sub)}</p>` : ''}
-        ${p.license ? `<p class="player-license-row">${renderLicenseBadges(p.license)}</p>` : ''}
-      </article>
-    `).join('');
+    playerGrid.innerHTML = effectivePlayersData.map(renderPlayerCard).join('');
   }
   const playersSyncWarning = document.getElementById('pagePlayersSyncWarning');
   if (playersSyncWarning) playersSyncWarning.hidden = !(window.__playersSyncFailed && cfg.playersCsvUrl);
@@ -79,11 +67,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   // スタッフの役職ボタンは、スプレッドシートの「役職」列に入力された文字ごとに
   // 自動生成する（初めて出てきた順番でボタンが並ぶ）
   if (filterBar) {
-    const staffRoles = [];
-    rawPlayersData.forEach((p) => {
-      if (p.isStaff && p.role && !staffRoles.includes(p.role)) staffRoles.push(p.role);
-    });
-    filterBar.insertAdjacentHTML('beforeend', staffRoles.map((role) =>
+    filterBar.insertAdjacentHTML('beforeend', getStaffRoleList(rawPlayersData).map((role) =>
       `<button class="filter-btn" data-filter="${escapeHtml(role)}">${escapeHtml(role)}</button>`
     ).join(''));
   }
