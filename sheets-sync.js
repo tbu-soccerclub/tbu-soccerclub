@@ -221,6 +221,12 @@
   // （sz=w800 は幅800pxのサムネイルという意味。元画像が大きくてもここで軽くなる）。
   // ※Googleドライブの正式なCDN機能ではないため、将来的にこの形式が使えなくなる
   //   可能性はゼロではないが、装飾目的のニュース画像用途としては許容している。
+  // フォームで画像を複数枚アップロードすると、セルには "リンクA, リンクB" とカンマ区切りで
+  // 入る。そのまま1つのURLとして扱うとファイルIDが壊れて表示できないため、
+  // 先にカンマで分割して1枚ずつ変換し、配列で返す。
+  const resolveDriveImages = (raw) =>
+    String(raw || "").split(",").map(resolveDriveImage).filter(Boolean);
+
   const resolveDriveImage = (raw) => {
     const v = String(raw || "").trim();
     if (!v) return "";
@@ -242,6 +248,7 @@
         const pinnedRaw = getVal(o, cols, "pinned");
         // 「固定する」→true、「固定しない」（またはそれ以外・未入力）→false
         const pinned = pinnedRaw.includes("しない") ? false : pinnedRaw.includes("する");
+        const images = resolveDriveImages(getVal(o, cols, "image"));
         return {
           tag: NEWS_TAG_MAP[getVal(o, cols, "tag")] || "info",
           date: getVal(o, cols, "date"),
@@ -250,7 +257,8 @@
           detail, // 「詳しい内容」が未入力なら空のまま（本文へのフォールバックは表示側で行う）
           pinned,
           link: getVal(o, cols, "link"),
-          image: resolveDriveImage(getVal(o, cols, "image"))
+          image: images[0] || "", // 1枚目（ホームの「詳しく見る」表示判定などに使う）
+          images                  // 全枚数（news.html の詳細表示で使う）
         };
       })
       .filter((n) => n.title)

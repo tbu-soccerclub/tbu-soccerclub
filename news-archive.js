@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         <button class="news-more" type="button" aria-expanded="false" aria-controls="${detailId}" id="${toggleId}">詳しく見る</button>
         <div class="news-detail" id="${detailId}" role="region" aria-labelledby="${toggleId}" hidden>
           <p>${escapeHtml(detail)}</p>
-          ${item.image ? `<a href="${escapeHtml(item.image.replace('sz=w800', 'sz=w1600'))}" target="_blank" rel="noopener" class="news-detail-image-link" aria-label="画像を拡大表示"><img class="news-detail-image" data-src="${escapeHtml(item.image)}" alt="" loading="lazy"></a>` : ''}
+          ${(item.images || (item.image ? [item.image] : [])).map((src) => `<a href="${escapeHtml(src.replace('sz=w800', 'sz=w1600'))}" target="_blank" rel="noopener" class="news-detail-image-link" aria-label="画像を拡大表示"><img class="news-detail-image" data-src="${escapeHtml(src)}" alt="" loading="lazy"></a>`).join('')}
           ${item.link ? `<p><a href="${escapeHtml(item.link)}" target="_blank" rel="noopener">投稿を見る →</a></p>` : ''}
         </div>
       </article>
@@ -74,11 +74,10 @@ document.addEventListener('DOMContentLoaded', async () => {
       // data-src のままにしておけば、閉じている間はブラウザが一切通信しないため、
       // ページ表示自体が画像のせいで重くなる心配がない。
       if (!isExpanded) {
-        const img = panel.querySelector('img[data-src]');
-        if (img) {
+        panel.querySelectorAll('img[data-src]').forEach((img) => {
           img.src = img.dataset.src;
           img.removeAttribute('data-src');
-        }
+        });
       }
     });
   });
