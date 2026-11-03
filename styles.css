@@ -987,6 +987,19 @@ input, textarea, select{ font-family: inherit; font-size: 1rem; }
   font-size: 3rem;
   color: var(--white);
 }
+/* 写真が無い時の人型シルエット（下端をカードの底に揃えて「胸から上」に見せる） */
+.player-avatar{
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+.player-avatar svg{
+  width: 72%;
+  height: auto;
+  fill: rgba(255,255,255,.65);
+}
 .player-name{
   margin: 16px 18px 2px;
   font-size: 1.02rem;

@@ -74,12 +74,16 @@ const getStaffRoleList = (players) => {
 
 // 選手・スタッフ1人分のカードHTML。トップページの部員紹介・部員紹介ページ（members.html）の
 // 両方で見た目を完全に揃えるため、テンプレートをここに1つだけ置いている
+// 写真が未設定・読み込み失敗の時に出す「人のシルエット」（名字1文字の代わり）。
+// 名前はカードの下に別途表示されるので、読み上げ対象にはしない（aria-hidden）
+const PLAYER_AVATAR = '<span class="player-avatar" aria-hidden="true"><svg viewBox="0 0 100 100" focusable="false"><circle cx="50" cy="36" r="17"/><path d="M14 100C14 72 30 60 50 60S86 72 86 100Z"/></svg></span>';
+
 const renderPlayerCard = (p) => `
       <article class="player-card${p.isStaff ? ' player-card--staff' : ''}" data-filter-key="${escapeHtml(p.isStaff ? p.role : p.grade)}">
         <div class="player-photo">
           ${p.photo
-            ? `<img src="${escapeHtml(p.photo)}" alt="${escapeHtml(p.name)}" class="player-photo-img" loading="lazy" data-fallback="${escapeHtml(`<span class="player-initial">${p.initial}</span>`)}" onerror="window.handleImgFallback(this)">`
-            : `<span class="player-initial">${escapeHtml(p.initial)}</span>`}
+            ? `<img src="${escapeHtml(p.photo)}" alt="${escapeHtml(p.name)}" class="player-photo-img" loading="lazy" data-fallback="${escapeHtml(PLAYER_AVATAR)}" onerror="window.handleImgFallback(this)">`
+            : PLAYER_AVATAR}
         </div>
         <h3 class="player-name">${escapeHtml(p.name)}</h3>
         <p class="player-meta">${escapeHtml(p.role)}</p>
